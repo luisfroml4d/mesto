@@ -1,0 +1,10 @@
+.element-item__like {
+  fill: #fff;
+  stroke: #000;
+  transition: 0.2s linear;
+}
+
+.element-item__like:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
