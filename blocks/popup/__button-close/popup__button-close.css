@@ -30,7 +30,8 @@
   .popup__button-close {
     width: 20px;
     height: 20px;
-    top: calc(0% - 20px);
+    top: calc(0% - 40px);
+    left: 93%;
     background-size: contain;
   }
 }
