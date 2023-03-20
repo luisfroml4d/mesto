@@ -99,11 +99,21 @@ function createCard(card) {
 
   cardImage.setAttribute('src', card.link);
   cardImage.setAttribute('alt', card.name);
+
+  //Кнопка Лайк//
   const likeButton = cardTemplate.querySelector('.element-item__like');
   likeButton.addEventListener('click', function(evt) {
   evt.target.classList.toggle('element-item__like_active')
 });
 
+
+//Кнопка Удалить//
+const deleteButton = cardTemplate.querySelector('.element-item__photo-basket');
+deleteButton.addEventListener('click', function() {
+  const deleteElement = deleteButton.closest('.element-item');
+  console.log(deleteElement);
+  deleteElement.remove();
+ });
 
   return cardTemplate;
 }
