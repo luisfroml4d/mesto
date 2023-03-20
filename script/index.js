@@ -22,6 +22,11 @@ const inputAddName = document.querySelector('.popup__input_name_title-card');
 const inputAddLink = document.querySelector('.popup__input_name_link-card');
 const formAddCard = document.querySelector('.popup__form-card');
 
+const popupImage = document.querySelector('.popup_image');
+const popupCaption = document.querySelector('.popup__caption');
+const popupCardImage = document.querySelector('.popup__card-image');
+const closeImageButton = document.querySelector('.popup__button-close-image');
+
 //открытие попап//
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
@@ -114,6 +119,20 @@ deleteButton.addEventListener('click', function() {
   console.log(deleteElement);
   deleteElement.remove();
  });
+
+
+ //Окно карточки//
+ function openPopupImg(card) {
+  popupCardImage.src = card.link;
+  popupCaption.textContent = card.name;
+  popupCardImage.alt = card.name;
+  openPopup(popupImage);
+};
+cardImage.addEventListener('click', () => openPopupImg(card));
+
+closeImageButton.addEventListener("click", function () {
+  closePopup(popupImage);
+});
 
   return cardTemplate;
 }
