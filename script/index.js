@@ -1,45 +1,126 @@
-let popup = document.querySelector('.popup');
-let formElement = document.querySelector('.popup__form');
+const popupEdit = document.querySelector('.popup_type-edit');
+const formElement = document.querySelector('.popup__form-profile');
 
-let editButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelector('.popup__button-close');
+const editButton = document.querySelector('.profile__edit-button');
+const closeButton = document.querySelector('.popup__button-close');
 
-let nameInput = document.querySelector('.popup__input_name_name');
-let nameInfo = document.querySelector('.profile__title');
+const nameInput = document.querySelector('.popup__input_name_name');
+const nameInfo = document.querySelector('.profile__title');
 
-let jobInput = document.querySelector('.popup__input_name_profession');
-let jobInfo = document.querySelector('.profile__description');
+const jobInput = document.querySelector('.popup__input_name_profession');
+const jobInfo = document.querySelector('.profile__description');
 
-let addButton = document.querySelector('.profile__add-button');
+const addButton = document.querySelector('.profile__add-button');
+const popupAdd = document.querySelector('.popup_type-add');
+const closeAddButton = document.querySelector('.popup__button-close-add');
 
+const templateElement = document.querySelector('#elementTemplate').content;
 
+const buttonPopupEdit = document.querySelector('.popup__button-edit');
+const buttonPopupAdd = document.querySelector('.popup__button-add');
+const inputAddName = document.querySelector('.popup__input_name_title-card');
+const inputAddLink = document.querySelector('.popup__input_name_link-card');
+const formAddCard = document.querySelector('.popup__form-card');
 
-
-//открытие попапа Эдит//
-function openPopup() {
-  popup.classList.add('popup_opened');
-  nameInput.value = nameInfo.textContent;
-  jobInput.value = jobInfo.textContent;
+//открытие попап//
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
 }
-//закрытие попапа Эдит//
-function closePopup() {
-  popup.classList.remove('popup_opened');
+//закрытие попап//
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
 };
+
 //кнопна сохранить в попапе Эдит батон//
 function handleFormSubmit(evt) {
   evt.preventDefault();
   nameInfo.textContent = nameInput.value;
   jobInfo.textContent = jobInput.value;
-  closePopup();
+  closePopup(popupEdit);
 };
-
 //колбэк на открытие попапа Эдит//
 editButton.addEventListener('click', function() {
-  openPopup();
+  openPopup(popupEdit);
+  nameInput.value = nameInfo.textContent;
+  jobInput.value = jobInfo.textContent;
 });
 //колбэк на закрытие попапа Эдит//
 closeButton.addEventListener('click', function () {
-  closePopup();
+  closePopup(popupEdit);
 });
 //колбэк на кнопку сохранить в Эдит попап Эдит//
 formElement.addEventListener('submit', handleFormSubmit);
+
+
+
+//колбэк на открытие попапа Адд//
+addButton.addEventListener('click', function() {
+  openPopup(popupAdd);
+});
+//колбэк на закрытие попапа Адд//
+closeAddButton.addEventListener("click", function () {
+  closePopup(popupAdd);
+});
+//Массив изображений с заголовками//
+const photoCards = [
+  {
+    name: 'Архыз',
+    link: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/%D0%98%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_307.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: './images/dombai.png'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  },
+];
+
+const cards = document.querySelector('.elements');
+
+function createCard(card) {
+  const cardTemplate = templateElement.querySelector(".element-item").cloneNode(true);
+  const cardImage = cardTemplate.querySelector(".element-item__image");
+  const cardTitle = cardTemplate.querySelector(".element-item__title");
+  cardTitle.textContent = card.name;
+
+  cardImage.setAttribute('src', card.link);
+  cardImage.setAttribute('alt', card.name);
+  return cardTemplate;
+}
+
+function renderElement(block, item) {
+  block.prepend(createCard(item))
+};
+
+photoCards.forEach(item => {
+  renderElement(cards, item)
+});
+
+//сделать попап создания карточек//
+function handleFormSubmitCard(evt) {
+  evt.preventDefault();
+  closePopup(popupAdd);
+
+  renderElement(cards, {
+    name: inputAddName.value,
+    link: inputAddLink.value,
+  })
+  evt.target.reset();
+};
+
+// Добавляет слушатели в форму//
+formAddCard.addEventListener("submit", handleFormSubmitCard);

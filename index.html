@@ -27,76 +27,43 @@
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
-        <section class="elements">
-          <div class="element-item">
-            <img src="./images/elbrus.png" alt="Изображение" class="element-item__image">
-            <div class="element-item__wrap">
-              <h2 class="element-item__title">Тест1</h2>
-              <button type="button" class="element-item__like"></button>
-            </div>
-          </div>
-          <div class="element-item">
-            <img src="./images/dombai.png" alt="Изображение" class="element-item__image">
-            <div class="element-item__wrap">
-              <h2 class="element-item__title">Тест1</h2>
-              <button type="button" class="element-item__like"></button>
-            </div>
-          </div>
-          <div class="element-item">
-            <img src="./images/elbrus.png" alt="Изображение" class="element-item__image">
-            <div class="element-item__wrap">
-              <h2 class="element-item__title">Тест1</h2>
-              <button type="button" class="element-item__like"></button>
-            </div>
-          </div>
-          <div class="element-item">
-            <img src="./images/dombai.png" alt="Изображение" class="element-item__image">
-            <div class="element-item__wrap">
-              <h2 class="element-item__title">Тест1</h2>
-              <button type="button" class="element-item__like"></button>
-            </div>
-          </div>
-          <div class="element-item">
-            <img src="./images/karachaevsk.png" alt="Изображение" class="element-item__image">
-            <div class="element-item__wrap">
-              <h2 class="element-item__title">Тест1</h2>
-              <button type="button" class="element-item__like"></button>
-            </div>
-          </div>
-          <div class="element-item">
-            <img src="./images/karachaevsk.png" alt="Изображение" class="element-item__image">
-            <div class="element-item__wrap">
-              <h2 class="element-item__title">Тест1</h2>
-              <button type="button" class="element-item__like"></button>
-            </div>
-          </div>
-        </section>
+        <section class="elements"></section>
       </main>
       <footer class="footer">
         <p class="footer__author">&copy; 2023 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_type-edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="popupForm">
+          <form class="popup__form popup__form-profile" name="popupForm">
             <input type="text" class="popup__input popup__input_name_name" placeholder="Имя"  name="name">
             <input type="text" class="popup__input popup__input_name_profession" placeholder="Вид деятельности"  name="job">
-            <input type="submit" class="popup__button-save"  value="Сохранить" name="submit">
+            <input type="submit" class="popup__button-save popup__button-edit"  value="Сохранить" name="submit">
           </form>
           <button type="button" class="popup__button-close"></button>
         </div>
       </div>
       <div class="popup popup_type-add">
         <div class="popup__container">
-          <h2 class="popup__title"></h2>
-          <form class="popup__form" name="addCard">
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form popup__form-card" name="addCard">
             <input type="text" placeholder="Название" class="popup__input popup__input_name_title-card" name="title-card">
             <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_name_link-card" name="link-card">
-            <input type="submit" class="popup__button-save" value="Создать" name="submit">
+            <input type="submit" class="popup__button-save popup__button-add" value="Создать" name="submit">
           </form>
-          <button type="button" class="popup__button-close"></button>
+          <button type="button" class="popup__button-close popup__button-close-add"></button>
         </div>
       </div>
+      <template id="elementTemplate">
+        <article class="element-item">
+          <img class="element-item__image">
+          <button type="button" class="element-item__photo-basket"></button>
+          <div class="element-item__wrap">
+            <h2 class="element-item__title">Тест1</h2>
+            <button type="button" class="element-item__like"></button>
+          </div>
+        </article>
+      </template>
       <script src="./script/index.js"></script>
 </body>
 </html>
