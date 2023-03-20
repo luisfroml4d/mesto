@@ -99,6 +99,12 @@ function createCard(card) {
 
   cardImage.setAttribute('src', card.link);
   cardImage.setAttribute('alt', card.name);
+  const likeButton = cardTemplate.querySelector('.element-item__like');
+  likeButton.addEventListener('click', function(evt) {
+  evt.target.classList.toggle('element-item__like_active')
+});
+
+
   return cardTemplate;
 }
 
@@ -124,3 +130,5 @@ function handleFormSubmitCard(evt) {
 
 // Добавляет слушатели в форму//
 formAddCard.addEventListener("submit", handleFormSubmitCard);
+
+
