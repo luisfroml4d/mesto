@@ -32,7 +32,7 @@ const closeImageButton = document.querySelector('.popup__button-close-image');
 function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
-    closePopup(popupElement);
+    closePopup(popup);
   }
 };
 
