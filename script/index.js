@@ -29,21 +29,10 @@ const popupCardImage = document.querySelector('.popup__card-image');
 const closeImageButton = document.querySelector('.popup__button-close-image');
 
 
-//Закрытие попапа с помощью escape и overlay
-function addListeners(popup) {
-  document.addEventListener('keydown', closePopupEsc);
-  popup.addEventListener('mousedown', closePopupByClick);
-};
-
-function removeListeners(popup) {
-  document.removeEventListener('keydown', closePopupEsc);
-  popup.removeEventListener('mousedown', closePopupByClick);
-};
-
 function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
-    closePopup(popup);
+    closePopup(popupElement);
   }
 };
 
@@ -54,12 +43,14 @@ function closePopupByClick(evt) {
 //открытие попап//
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
-  addListeners(popupElement);
+  document.addEventListener('keydown', closePopupEsc);
+  popupElement.addEventListener('mousedown', closePopupByClick);
 }
 //закрытие попап//
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
-  removeListeners(popupElement);
+  document.removeEventListener('keydown', closePopupEsc);
+  popupElement.removeEventListener('mousedown', closePopupByClick);
 };
 
 //кнопна сохранить в попапе Эдит батон//
