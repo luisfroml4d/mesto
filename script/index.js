@@ -18,6 +18,7 @@ const templateElement = document.querySelector('#elementTemplate').content;
 
 const buttonPopupEdit = document.querySelector('.popup__button-edit');
 const buttonPopupAdd = document.querySelector('.popup__button-add');
+
 const inputAddName = document.querySelector('.popup__input_name_title-card');
 const inputAddLink = document.querySelector('.popup__input_name_link-card');
 const formAddCard = document.querySelector('.popup__form-card');
@@ -70,9 +71,11 @@ function handleProfileFormSubmit(evt) {
 };
 //колбэк на открытие попапа Эдит//
 editButton.addEventListener('click', function() {
-  openPopup(popupEdit);
   nameInput.value = nameInfo.textContent;
   jobInput.value = jobInfo.textContent;
+  openPopup(popupEdit);
+  resetInput(profileForm);
+  enableButton(buttonPopupEdit, config);
 });
 //колбэк на закрытие попапа Эдит//
 profileCloseButton.addEventListener('click', function () {
@@ -86,6 +89,9 @@ profileForm.addEventListener('submit', handleProfileFormSubmit);
 //колбэк на открытие попапа Адд//
 addButton.addEventListener('click', function() {
   openPopup(popupAdd);
+  formAddCard.reset();
+  enableButton(buttonPopupAdd, config);
+  resetInput(formAddCard);
 });
 //колбэк на закрытие попапа Адд//
 closeAddButton.addEventListener("click", function () {
