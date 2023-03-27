@@ -182,5 +182,3 @@ function handleFormSubmitCard(evt) {
 
 // Добавляет слушатели в форму//
 formAddCard.addEventListener("submit", handleFormSubmitCard);
-
-
