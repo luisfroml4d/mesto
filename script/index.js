@@ -28,6 +28,7 @@ const popupCaption = document.querySelector('.popup__caption');
 const popupCardImage = document.querySelector('.popup__card-image');
 const closeImageButton = document.querySelector('.popup__button-close-image');
 
+const popups = document.querySelectorAll('.popup');
 
 function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
@@ -36,21 +37,23 @@ function closePopupEsc(evt) {
   }
 };
 
-function closePopupByClick(evt) {
-  closePopup(evt.target);
- };
+popups.forEach((popup) => {
+  popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      popup.classList.remove('popup_opened');
+    }
+  });
+});
 
 //открытие попап//
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  popupElement.addEventListener('mousedown', closePopupByClick);
 }
 //закрытие попап//
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
-  popupElement.removeEventListener('mousedown', closePopupByClick);
 };
 
 //кнопна сохранить в попапе Эдит батон//
